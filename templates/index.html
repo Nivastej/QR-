@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modern User Form</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+  <div class="card">
+    <h1>User Details</h1>
+    <p class="sub">Enter your details below</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="alert">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="Your full name" required>
+
+      <label>Age</label>
+      <input type="number" name="age" min="1" max="120" placeholder="Your age" required>
+
+      <label>Phone No</label>
+      <input type="text" name="phone" placeholder="Your phone number" required>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <a class="link" href="/records">View Saved Records</a>
+  </div>
+</div>
+</body>
+</html>
